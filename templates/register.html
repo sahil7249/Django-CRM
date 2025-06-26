@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="col-md-6 mx-auto">
+        <h2 class="mt-2">Register Form</h2>
+        <form method="POST" class="form mt-4">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-outline-secondary">register</button>
+        </form>
+    </div>
+{% endblock %}
