@@ -1,6 +1,7 @@
 from django import forms 
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from . models import Record
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(label='',widget=forms.TextInput(attrs={'class':'form-control','placeholder':"Email Address"}))
@@ -28,3 +29,17 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password'
         self.fields['password2'].label = ''
         self.fields['password2'].help_text = '<span class="form-text text-muted"><small>Enter the same password as before, for verification.</small></span>'	
+
+class AddRecordForm(forms.ModelForm):
+    first_name = forms.CharField(max_length=50,widget=forms.widgets.TextInput(attrs={'placeholder':'First Name','class':'form-control'}), required=True,label="")
+    last_name = forms.CharField(max_length=50,widget=forms.widgets.TextInput(attrs={'placeholder':'Last Name','class':'form-control'}), required=True,label="")
+    state = forms.CharField(max_length=50,widget=forms.widgets.TextInput(attrs={'placeholder':'State','class':'form-control'}), required=True,label="")
+    city = forms.CharField(max_length=50,widget=forms.widgets.TextInput(attrs={'placeholder':'City','class':'form-control'}) ,required=True,label="")
+    address = forms.CharField(max_length=100,widget=forms.widgets.TextInput(attrs={'placeholder':'Address','class':'form-control'}), required=True,label="")
+    pincode = forms.CharField(max_length=100,widget=forms.widgets.TextInput(attrs={'placeholder':'Pincode','class':'form-control'}), required=True,label="")
+    email = forms.EmailField(max_length=100,widget=forms.widgets.TextInput(attrs={'placeholder':'Email','class':'form-control'}), required=True,label="")
+    phone = forms.CharField(max_length=100,widget=forms.widgets.TextInput(attrs={'placeholder':'Phone Number','class':'form-control'}), required=True,label="")
+
+    class Meta:
+        model = Record
+        exclude = ('user',)

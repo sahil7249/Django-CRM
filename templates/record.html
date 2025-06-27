@@ -1,0 +1,17 @@
+{% extends "layout.html" %} {% block content %}
+<div class="card">
+  <div class="card-header">{{record.first_name}} {{record.last_name}}</div>
+  <div class="card-body">
+    <p class="card-text"> <strong>Email</strong> : {{record.email}}</p>
+    <p class="card-text"> <strong>Phone</strong> : {{record.phone}}</p>
+    <p class="card-text"> <strong>State</strong> : {{record.state}}</p>
+    <p class="card-text"> <strong>City</strong> : {{record.city}}</p>
+    <p class="card-text"> <strong>Address</strong> : {{record.address}}</p>
+    <p class="card-text"> <strong>Pincode</strong> : {{record.pincode}}</p>
+    <p class="card-text"> <strong>ID</strong> : {{record.id}}</p>
+  </div>
+</div>
+<a href="{% url 'home'%}" class="btn btn-outline-secondary mt-2">Back</a>
+<a href="{% url 'update_record' record.id%}" class="btn btn-outline-success mt-2">update</a>
+<a href="{% url 'delete_record' record.id %}" class="btn btn-danger mt-2">delete</a>
+{% endblock %}
