@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <h1>Add Record</h1>
+        <form  method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-secondary">Update</button>
+            <a href="{% url 'customer_record' record.id %}" class="btn btn-outline-secondary">back</a>
+        </form>
+    {% endif %}
+{% endblock %}
